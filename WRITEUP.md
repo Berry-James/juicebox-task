@@ -23,7 +23,7 @@ The disadvantage of taking this approach is the slight delay between pages, howe
 
 As of a fairly recent Next.js version, it is now possible to nest components inside the `app` directory.  This is helpful for keeping code specific to a page/layout close to where it is implemented.  For example, I am able to keep all components specific to the `/about` page in a folder titled `components`, nested at the same level as `page.tsx`.
 
-### Issues Face
+### Issues Faced
 
 There were a number of issues which I faced during the development of this task.
 
@@ -45,4 +45,4 @@ There were a number of issues which I faced during the development of this task.
 
 9. The documentation instructs that I should use the 'Lenis' package for smooth scrolling, however in no aspect do the designs indicate there would need to be any sort of page scrolling.  I have not included the package as I don't see its purpose with the design I was given.
 
- 
+10. I was unable to get a smooth enough animation for the text wipe in the About page slides.  I have left my incomplete implementation in as an example of my thought process.
