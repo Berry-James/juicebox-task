@@ -1,5 +1,7 @@
 ## Juicebox Introductory Task
 
+__I have included a technical writeup in the `WRITEUP.md` file__
+
 Built with:
 - Next.js
 - Typescript

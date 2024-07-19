@@ -91,11 +91,6 @@ export const FormSegment = () => {
     const handleGoNextField = async () => {
 
         const activeField = FORM_STEPS[activeFieldIndex];
-
-        // TODO -> put logic to submit form here
-        if(!activeField.name) {
-            return
-        }
         
         // Validate field
         const isFieldValid = await formMethods.trigger(activeField.name, { shouldFocus: true });
@@ -113,14 +108,18 @@ export const FormSegment = () => {
 
                 // Otherwise, update to next field
                 setActiveFieldIndex((prevState) => prevState + 1);       
+
+                // Clear form errors (fix bug with yup resolver validating all fields rather than given field name)
+                formMethods.clearErrors();
                 
+                // FADE in description text
                 descriptionTextRef.current && gsap.to(descriptionTextRef.current, { opacity: 1 })
             }
         });
 
-       descriptionTextRef.current && tl.to(descriptionTextRef.current, { opacity: 0 }, 0);
+        // FADE out description text
+        descriptionTextRef.current && tl.to(descriptionTextRef.current, { opacity: 0 }, 0);
 
-        
     }
 
     // SIDE EFFECTS

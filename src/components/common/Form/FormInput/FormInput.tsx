@@ -31,15 +31,11 @@ export const FormInput = ({
     // FORM
     const { register, formState: { errors } } = useFormContext();
 
-    // Declare field registration externally, as we need access to the ref callback
-    const registration = register(name, rules);
-
     // REFS
     /**
      * Ref to the label tag
      */
     const labelRef = useRef<HTMLLabelElement | null>(null);
-    const unsubscribe = useRef<Function | null>(null);
 
     // COMPUTED
     /**
@@ -49,13 +45,10 @@ export const FormInput = ({
         return errors?.[name]?.message ? errors?.[name]?.message as string : null
     }, [errors, name]);
 
-
-    // COMPUTED
     /**
      * Custom ID for the field, used for safely linking label to field
      */
     const fieldId = useMemo(() => `field-${name}`, [name]);
-
 
     return (
         <div className='flex flex-col gap-0.5'>
