@@ -2,32 +2,94 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+  
+  html {
+    font-family: var(--font-body), system-ui, sans-serif;
+    color: #FAFAFA;
+    background: radial-gradient(#222737, #0C0D10);
+    background-size: 200% 200%;
+    background-position: center;
+    animation: backgroundAnimation 30s ease infinite;
   }
+
+  @keyframes backgroundAnimation {
+    0% {
+      background-position: 50% 0%;
+    }
+    50% {
+      background-position: 50% 50%;
+    }
+    100% {
+      background-position: 50% -50%;
+    }
+  }
+
+  h6 {
+    @apply text-lg
+  }
+
+  h5 {
+    @apply text-xl
+  }
+
+  h4 {
+    @apply text-2xl
+  }
+
+  h2 {
+    @apply text-3xl
+  }
+
+  h1 {
+    @apply font-bold text-4xl text-center
+  }
+
+  input {
+    @apply outline-none border-none bg-transparent
+  }
+
+  input:focus {
+    @apply border-none outline-none
+  }
+  
+  input::placeholder {
+    @apply text-white/60
+  }
+
+  label {
+    @apply text-white/80 text-sm
+  }
+
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer components {
+
+  button.primary {
+    @apply bg-violet-500 text-black border-violet-500 outline-none
+  }
+
+  button.secondary {
+    @apply bg-white text-black outline outline-white/20 outline-8 bg-clip-padding	
+  }
+
+  button:disabled {
+    @apply bg-white/60
+  }
+
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* SWIPER OVERRIDES */
+.swiper-pagination > .swiper-pagination-bullet-active {
+  @apply bg-violet-500
+}
+
+.swiper-pagination > .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
+  @apply bg-gray-300
 }
